@@ -172,8 +172,8 @@
          maxTime - oldest uncommited update (in ms) is this long ago
     -->
     <autoCommit> 
-      <maxDocs>2000</maxDocs>
-      <maxTime>120000</maxTime> 
+      <maxDocs>50</maxDocs>
+      <maxTime>15000</maxTime> 
     </autoCommit>
 
 
@@ -719,6 +719,16 @@
   <!-- config for the admin interface -->
   <admin>
     <defaultQuery>solr</defaultQuery>
+
+    <gettableFiles>
+         solrconfig.xml
+         schema.xml
+         elevate.xml
+         mapping-ISOLatin1Accent.txt
+         protwords.txt
+         stopwords.txt
+         synonyms.txt
+    </gettableFiles>   
 
     <!-- configure a healthcheck file for servers behind a loadbalancer
     <healthcheck type="file">server-enabled</healthcheck>
