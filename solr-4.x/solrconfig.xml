@@ -20,7 +20,7 @@
      For more details about configurations options that may appear in
      this file, see http://wiki.apache.org/solr/SolrConfigXml. 
 -->
-<config>
+<config name="drupal-4.0-solr-4.x" >
   <!-- In all configuration below, a prefix of "solr." for class names
        is an alias that causes solr to search appropriate packages,
        including org.apache.solr.(search|update|request|core|analysis)
@@ -132,7 +132,7 @@
        WARNING: See also the <mainIndex> section below for parameters
        that overfor Solr's main Lucene index.
     -->
-  <indexDefaults>
+  <indexConfig>
 
     <useCompoundFile>false</useCompoundFile>
 
@@ -203,14 +203,6 @@
          Default is 128 and is likely good for most everyone.
       -->
     <!-- <termIndexInterval>256</termIndexInterval> -->
-  </indexDefaults>
-
-  <!-- Main Index
-
-       Values here override the values in the <indexDefaults> section
-       for the main on disk index.
-    -->
-  <mainIndex>
 
     <useCompoundFile>false</useCompoundFile>
     <ramBufferSizeMB>32</ramBufferSizeMB>
@@ -271,7 +263,7 @@
       -->
      <infoStream file="INFOSTREAM.txt">false</infoStream> 
 
-  </mainIndex>
+  </indexConfig>
 
   <!-- JMX
        
@@ -900,7 +892,7 @@
        requires: -H 'Content-type:text/xml; charset=utf-8'
     -->
   <requestHandler name="/update" 
-                  class="solr.XmlUpdateRequestHandler">
+                  class="solr.UpdateRequestHandler">
     <!-- See below for information on defining 
          updateRequestProcessorChains that can be used by name 
          on each Update Request
@@ -915,7 +907,7 @@
        http://wiki.apache.org/solr/javabin
     -->
   <requestHandler name="/update/javabin" 
-                  class="solr.BinaryUpdateRequestHandler" />
+                  class="solr.UpdateRequestHandler" />
 
   <!-- CSV Update Request Handler
        http://wiki.apache.org/solr/UpdateCSV
